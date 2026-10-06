@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Durov — Executive Game Producer &amp; Art Direction Expert</title>
+  <meta name="description"
+    content="Alex Durov — Executive Game Producer &amp; Art Direction Expert. 20+ years of driving game development, establishing studios, and scaling mobile hits to 30M+ downloads." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Inter (modern sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            ink: {
+              DEFAULT: '#14161A',
+              700: '#2B2F36',
+              500: '#5B6472',
+              400: '#8B94A1',
+            },
+            line: '#E5E7EB',
+            accent: {
+              DEFAULT: '#2A6BF2',
+              dark: '#1D4ED8',
+              soft: '#F0F6FF',
+            },
+          },
+          maxWidth: {
+            shell: '1080px',
+          },
+          letterSpacing: {
+            wide2: '0.08em',
+            widest2: '0.14em',
+            widest3: '0.22em',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Keep anchored sections clear of the sticky header */
+    section[id],
+    footer[id] {
+      scroll-margin-top: 88px;
+    }
+
+    /* Soft light backdrop, matching the blueprint's white -> pale blue gradient */
+    .page-bg {
+      background-image:
+        radial-gradient(120% 90% at 50% -20%, #F2F7FF 0%, rgba(255, 255, 255, 0) 58%),
+        radial-gradient(60% 50% at 100% 0%, #F7FAFF 0%, rgba(255, 255, 255, 0) 60%);
+    }
+
+    /* ---------------- Header navigation ---------------- */
+    .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 68px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #5B6472;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #14161A;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: #2A6BF2;
+      opacity: 0;
+      transform: scaleX(0.5);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-link.is-active {
+      color: #14161A;
+      font-weight: 600;
+    }
+
+    .nav-link.is-active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: #5B6472;
+      border-bottom: 1px solid #E5E7EB;
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav-link:last-child {
+      border-bottom: 0;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.is-active {
+      color: #14161A;
+    }
+
+    /* ---------------- Expandable timeline panels ----------------
+       Animated with grid-template-rows, so any content height expands
+       smoothly: no fixed max-height and no layout jump.  ------------- */
+    .collapsible {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      margin-top: 0;
+      transition:
+        grid-template-rows 420ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 320ms ease,
+        margin-top 320ms ease;
+    }
+
+    .collapsible > .collapsible-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .collapsible.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      margin-top: 0.875rem;
+    }
+
+    .toggle-chevron {
+      transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [aria-expanded="true"] .toggle-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ---------------- Vertical timeline rail ----------------
+       Drawn with a pseudo-element so the list keeps clean markup and
+       Tailwind's spacing utilities only space the timeline entries.   */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background-color: #E5E7EB;
+    }
+
+    /* ---------------- Motion preferences ---------------- */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .collapsible,
+      .toggle-chevron,
+      .nav-link::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white font-sans text-ink antialiased">
+  <!-- Accessibility: keyboard users can jump straight to the content -->
+  <a href="#home"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">
+    Skip to content
+  </a>
+
+  <!-- ========================= HEADER ========================= -->
+  <header class="sticky top-0 z-50 border-b border-line bg-white/85 backdrop-blur-md">
+    <div class="mx-auto flex h-[68px] max-w-shell items-center justify-between gap-6 px-5 sm:px-8">
+      <!-- Monogram -->
+      <a href="#home" class="flex items-center" aria-label="Alex Durov — home">
+        <span class="text-[27px] font-black leading-none tracking-[-0.08em] text-ink">AD</span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden items-center gap-9 lg:flex" aria-label="Primary">
+        <a href="#home" class="nav-link is-active" data-nav-link="home">Home</a>
+        <a href="#experience" class="nav-link" data-nav-link="experience">Experience</a>
+        <a href="#expertise" class="nav-link" data-nav-link="expertise">Expertise</a>
+        <a href="#portfolio" class="nav-link" data-nav-link="portfolio">Portfolio</a>
+        <a href="#contact" class="nav-link" data-nav-link="contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <!-- Primary call to action -->
+        <a href="#contact"
+          class="group hidden items-center gap-2 text-[15px] font-semibold text-ink transition-colors duration-200 hover:text-accent sm:inline-flex">
+          <span>Let's talk</span>
+          <svg class="h-[18px] w-[18px] text-accent transition-transform duration-300 group-hover:translate-x-1"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 12h15" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
+        </a>
+
+        <!-- Mobile menu toggle -->
+        <button type="button" id="navToggle"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line text-ink transition-colors duration-200 hover:bg-[#F7F8FA] lg:hidden"
+          aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg id="navIconOpen" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M3 7h18M3 12h18M3 17h18" />
+          </svg>
+          <svg id="navIconClose" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile navigation panel -->
+    <nav id="mobileNav" class="hidden border-t border-line bg-white lg:hidden" aria-label="Mobile">
+      <div class="mx-auto max-w-shell px-5 py-1 sm:px-8">
+        <a href="#home" class="mobile-nav-link is-active" data-nav-link="home">
+          Home
+          <svg class="h-4 w-4 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#experience" class="mobile-nav-link" data-nav-link="experience">
+          Experience
+          <svg class="h-4 w-4 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#expertise" class="mobile-nav-link" data-nav-link="expertise">
+          Expertise
+          <svg class="h-4 w-4 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#portfolio" class="mobile-nav-link" data-nav-link="portfolio">
+          Portfolio
+          <svg class="h-4 w-4 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#contact" class="mobile-nav-link" data-nav-link="contact">
+          Contact
+          <svg class="h-4 w-4 text-ink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ========================= HERO ========================= -->
+    <section id="home" class="page-bg border-b border-line">
+      <div class="mx-auto max-w-shell px-5 pb-12 pt-12 sm:px-8 sm:pb-14 sm:pt-16 lg:pb-16">
+        <div class="grid items-center gap-9 md:grid-cols-[272px_minmax(0,1fr)] md:gap-12 lg:gap-16">
+
+          <!-- Avatar -->
+          <div class="flex justify-center md:justify-start">
+            <img src="avatar.png" alt="Portrait of Alex Durov, Executive Game Producer" width="544" height="544"
+              decoding="async"
+              class="h-[230px] w-[230px] rounded-full object-cover object-[50%_16%] ring-1 ring-line shadow-[0_24px_60px_-28px_rgba(20,22,26,0.45)] sm:h-[258px] sm:w-[258px] lg:h-[272px] lg:w-[272px]" />
+          </div>
+
+          <!-- Name, title & summary -->
+          <div class="text-center md:text-left">
+            <p
+              class="flex flex-col items-center gap-2.5 text-[11.5px] font-semibold uppercase tracking-widest3 text-ink-500 sm:flex-row sm:gap-3 sm:text-[12.5px] md:justify-start">
+              <span>Game Industry Professional</span>
+              <span class="hidden h-[2px] w-12 shrink-0 bg-accent sm:block" aria-hidden="true"></span>
+            </p>
+
+            <h1
+              class="mt-4 text-[40px] font-black leading-[0.95] tracking-[-0.035em] text-ink sm:text-[54px] lg:text-[62px]">
+              Alex Durov
+            </h1>
+
+            <p class="mt-3 text-[19px] font-bold leading-tight tracking-[-0.015em] text-ink-700 sm:text-[23px] lg:text-[25px]">
+              Executive Game Producer &amp; Art Direction Expert
+            </p>
+
+            <p class="mx-auto mt-5 max-w-[540px] text-[15.5px] leading-relaxed text-ink-500 sm:text-[16.5px] md:mx-0">
+              20+ years of driving game development, establishing studios, and scaling mobile hits
+              to 30M+ downloads.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= METRICS ========================= -->
+    <section class="bg-white pt-10 sm:pt-12">
+      <div class="mx-auto max-w-shell px-5 sm:px-8">
+        <div class="grid gap-5 md:grid-cols-3">
+
+          <!-- 20+ years -->
+          <article
+            class="rounded-xl border border-line bg-white p-6 transition duration-300 hover:border-ink-400/50 hover:shadow-[0_20px_45px_-34px_rgba(20,22,26,0.55)] sm:p-7">
+            <svg class="h-8 w-8 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3.2" y="5" width="17.6" height="15.6" rx="2.2" />
+              <path d="M8 3.4v3.2M16 3.4v3.2M3.2 9.6h17.6" />
+            </svg>
+
+            <p class="mt-6 text-[42px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[46px]">20+</p>
+            <p class="mt-3 text-[12px] font-bold uppercase tracking-widest2 text-ink-700">Years in Gamedev</p>
+            <span class="mt-4 block h-[3px] w-9 bg-accent" aria-hidden="true"></span>
+            <p class="mt-4 text-[13.5px] leading-relaxed text-ink-500">From concept to live ops.</p>
+          </article>
+
+          <!-- 40+ projects -->
+          <article
+            class="rounded-xl border border-line bg-white p-6 transition duration-300 hover:border-ink-400/50 hover:shadow-[0_20px_45px_-34px_rgba(20,22,26,0.55)] sm:p-7">
+            <svg class="h-8 w-8 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="8.2" r="3.1" />
+              <path d="M3.6 19.4c0-2.9 2.4-4.8 5.4-4.8s5.4 1.9 5.4 4.8" />
+              <path d="M16.2 5.9a3.1 3.1 0 0 1 0 5.9M17.6 14.9c1.9.6 3 2.1 3 4.5" />
+            </svg>
+
+            <p class="mt-6 text-[42px] font-black leading-none tracking-[-0.03em] text-ink sm:text-[46px]">40+</p>
+            <p class="mt-3 text-[12px] font-bold uppercase tracking-widest2 text-ink-700">Outsource Projects
+              Delivered</p>
+            <span class="mt-4 block h-[3px] w-9 bg-accent" aria-hidden="true"></span>
+            <p class="mt-4 text-[13.5px] leading-relaxed text-ink-500">AAA, PC/Console &amp; Mobile</p>
+          </article>
+
+          <!-- Featured: Zero City -->
+          <article
+            class="rounded-xl border border-accent/50 bg-accent-soft p-6 transition duration-300 hover:border-accent/80 hover:shadow-[0_22px_50px_-34px_rgba(42,107,242,0.6)] sm:p-7">
+            <svg class="h-8 w-8 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M7.4 7.6h9.2a4.6 4.6 0 0 1 4.3 6.2l-1 2.5a2.3 2.3 0 0 1-3.9.7l-1.6-1.8H8.6L7 17a2.3 2.3 0 0 1-3.9-.7l-1-2.5a4.6 4.6 0 0 1 4.3-6.2Z" />
+              <path d="M8.6 11.3v2M7.6 12.3h2M15.4 11.8h.01M17.4 13.2h.01" />
+            </svg>
+
+            <h2 class="mt-6 text-[30px] font-black uppercase leading-none tracking-[-0.02em] text-ink sm:text-[33px]">
+              Zero City
+            </h2>
+            <p class="mt-2.5 text-[12px] font-bold uppercase tracking-widest2 text-ink-500">Hit Mobile Game</p>
+
+            <div class="mt-5 flex items-stretch">
+              <div class="pr-6">
+                <p class="text-[26px] font-black leading-none tracking-[-0.02em] text-ink">30M+</p>
+                <p class="mt-2 text-[10.5px] font-bold uppercase tracking-widest2 text-ink-500">Downloads</p>
+              </div>
+              <div class="border-l border-accent/25 pl-6">
+                <p class="text-[26px] font-black leading-none tracking-[-0.02em] text-ink">$15M+</p>
+                <p class="mt-2 text-[10.5px] font-bold uppercase tracking-widest2 text-ink-500">Revenue</p>
+              </div>
+            </div>
+
+            <p class="mt-5 text-[13.5px] leading-relaxed text-ink-500">Acquired by MY.GAMES</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= EXPERTISE + EXPERIENCE ========================= -->
+    <section class="bg-white pb-12 pt-5 sm:pb-16">
+      <div class="mx-auto max-w-shell px-5 sm:px-8">
+        <div class="grid gap-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)]">
+
+          <!-- ---------------- Left: Core expertise ---------------- -->
+          <div id="expertise" class="rounded-xl border border-line bg-white p-6 sm:p-8">
+
+            <h2 class="text-[13px] font-bold uppercase tracking-widest2 text-ink">Core Expertise</h2>
+            <span class="mt-3 block h-[2px] w-9 bg-accent" aria-hidden="true"></span>
+
+            <ul class="mt-8 space-y-7">
+              <li class="flex items-start gap-5">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-line bg-white">
+                  <svg class="h-7 w-7 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 20c2.6-.5 4.1-.9 5.8-2.6l8.4-8.4a2.6 2.6 0 0 0-3.7-3.7L6.1 13.7C4.4 15.4 3.6 17.4 3 20Z" />
+                    <path d="m14.4 6.6 3 3" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="text-[16.5px] font-bold tracking-[-0.01em] text-ink">Art Direction</h3>
+                  <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                    Vision, style, visual quality,<br class="hidden sm:block" />
+                    from concept to final.
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-5">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-line bg-white">
+                  <svg class="h-7 w-7 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 2.9 20 7.4v9.2L12 21.1 4 16.6V7.4L12 2.9Z" />
+                    <path d="M4.4 7.6 12 12l7.6-4.4M12 12v9" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="text-[16.5px] font-bold tracking-[-0.01em] text-ink">Product Management</h3>
+                  <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                    Games that players love<br class="hidden sm:block" />
+                    and that make business sense.
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-5">
+                <span
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-line bg-white">
+                  <svg class="h-7 w-7 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="9" cy="8.2" r="3.1" />
+                    <path d="M3.6 19.4c0-2.9 2.4-4.8 5.4-4.8s5.4 1.9 5.4 4.8" />
+                    <path d="M16.2 5.9a3.1 3.1 0 0 1 0 5.9M17.6 14.9c1.9.6 3 2.1 3 4.5" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="text-[16.5px] font-bold tracking-[-0.01em] text-ink">Studio Leadership</h3>
+                  <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                    Build teams, set direction,<br class="hidden sm:block" />
+                    deliver results.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Divider -->
+            <hr class="my-9 border-t border-line" />
+
+            <h2 class="text-[13px] font-bold uppercase tracking-widest2 text-ink">How We Can Work Together</h2>
+            <span class="mt-3 block h-[2px] w-9 bg-accent" aria-hidden="true"></span>
+
+            <ul class="mt-6 flex flex-wrap gap-3">
+              <li>
+                <span
+                  class="inline-flex cursor-default items-center rounded-full border border-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink-700 transition duration-300 hover:border-accent/60 hover:bg-accent-soft hover:text-accent">
+                  Full-Time Production
+                </span>
+              </li>
+              <li>
+                <span
+                  class="inline-flex cursor-default items-center rounded-full border border-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink-700 transition duration-300 hover:border-accent/60 hover:bg-accent-soft hover:text-accent">
+                  Project Consulting
+                </span>
+              </li>
+              <li>
+                <span
+                  class="inline-flex cursor-default items-center rounded-full border border-line bg-white px-5 py-2.5 text-[13.5px] font-semibold text-ink-700 transition duration-300 hover:border-accent/60 hover:bg-accent-soft hover:text-accent">
+                  Turnkey Team Building
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ---------------- Right: Professional experience ---------------- -->
+          <div id="experience" class="rounded-xl border border-line bg-white p-6 sm:p-8">
+
+            <h2 class="text-[13px] font-bold uppercase tracking-widest2 text-ink">Professional Experience</h2>
+            <span class="mt-3 block h-[2px] w-9 bg-accent" aria-hidden="true"></span>
+
+            <!-- Timeline -->
+            <ol class="timeline mt-9 space-y-9">
+
+              <!-- Role 1 -->
+              <li class="relative pl-8">
+                <span class="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-white"
+                  aria-hidden="true"></span>
+
+                <p class="text-[13px] font-medium text-ink-400">2020 — 2026</p>
+                <h3 class="mt-1.5 text-[17px] font-bold tracking-[-0.01em] text-ink">Fractional Producer &amp;
+                  Consultant</h3>
+                <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                  Strategic support for game studios, product development, and team scaling.
+                </p>
+
+                <button type="button" data-collapsible-toggle aria-expanded="false" aria-controls="period-projects-1"
+                  class="group mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-accent transition-colors duration-200 hover:text-accent-dark">
+                  <span
+                    class="border-b border-transparent pb-px transition-colors duration-200 group-hover:border-accent-dark/40">
+                    View projects from this period
+                  </span>
+                  <svg class="toggle-chevron h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div id="period-projects-1" class="collapsible" role="region" aria-label="Projects from 2020 to 2026">
+                  <div class="collapsible-inner">
+                    <div class="rounded-lg border border-line bg-[#FAFBFD] p-4 sm:p-5">
+                      <p class="text-[13.5px] leading-relaxed text-ink-500">
+                        External Producer and operational advisor on various mid-core and mobile products.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Role 2 -->
+              <li class="relative pl-8">
+                <span class="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-white"
+                  aria-hidden="true"></span>
+
+                <p class="text-[13px] font-medium text-ink-400">2020</p>
+                <h3 class="mt-1.5 text-[17px] font-bold tracking-[-0.01em] text-ink">Head of Production
+                  <span class="font-bold text-ink-700">(MY.GAMES)</span>
+                </h3>
+                <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                  Managed production for multiple projects, studio processes, and cross-team collaboration.
+                </p>
+
+                <button type="button" data-collapsible-toggle aria-expanded="false" aria-controls="period-projects-2"
+                  class="group mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-accent transition-colors duration-200 hover:text-accent-dark">
+                  <span
+                    class="border-b border-transparent pb-px transition-colors duration-200 group-hover:border-accent-dark/40">
+                    View projects from this period
+                  </span>
+                  <svg class="toggle-chevron h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div id="period-projects-2" class="collapsible" role="region" aria-label="Projects from 2020">
+                  <div class="collapsible-inner">
+                    <div class="rounded-lg border border-line bg-[#FAFBFD] p-4 sm:p-5">
+                      <p class="text-[13.5px] leading-relaxed text-ink-500">
+                        Led the integration of the mobile division into the global publisher's ecosystem after
+                        acquisition.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Role 3 -->
+              <li class="relative pl-8">
+                <span class="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-white"
+                  aria-hidden="true"></span>
+
+                <p class="text-[13px] font-medium text-ink-400">2018 — 2020</p>
+                <h3 class="mt-1.5 text-[17px] font-bold tracking-[-0.01em] text-ink">CEO / Co-Founder
+                  <span class="font-bold text-ink-700">(INGAME Studio)</span>
+                </h3>
+                <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                  Founded and scaled the studio, launched proprietary mobile games.
+                </p>
+
+                <button type="button" data-collapsible-toggle aria-expanded="false" aria-controls="period-projects-3"
+                  class="group mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-accent transition-colors duration-200 hover:text-accent-dark">
+                  <span
+                    class="border-b border-transparent pb-px transition-colors duration-200 group-hover:border-accent-dark/40">
+                    View projects from this period
+                  </span>
+                  <svg class="toggle-chevron h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div id="period-projects-3" class="collapsible" role="region"
+                  aria-label="Projects from 2018 to 2020">
+                  <div class="collapsible-inner">
+                    <div class="rounded-lg border border-line bg-[#FAFBFD] p-4 sm:p-5">
+                      <p class="text-[11px] font-bold uppercase tracking-widest2 text-ink-400">Projects from this
+                        period</p>
+                      <ul class="mt-3 flex flex-wrap gap-2">
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Zero City</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          BRAVIUM</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Forestry: Funny Forrest Family</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Forestry</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Role 4 -->
+              <li class="relative pl-8">
+                <span class="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-white"
+                  aria-hidden="true"></span>
+
+                <p class="text-[13px] font-medium text-ink-400">2011 — 2018</p>
+                <h3 class="mt-1.5 text-[17px] font-bold tracking-[-0.01em] text-ink">Founder &amp; Executive Art
+                  Producer <span class="font-bold text-ink-700">(Sanctum Studio)</span>
+                </h3>
+                <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                  Led art direction, production, and full game development outsource cycle.
+                </p>
+
+                <button type="button" data-collapsible-toggle aria-expanded="false" aria-controls="period-projects-4"
+                  class="group mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-accent transition-colors duration-200 hover:text-accent-dark">
+                  <span
+                    class="border-b border-transparent pb-px transition-colors duration-200 group-hover:border-accent-dark/40">
+                    View projects from this period
+                  </span>
+                  <svg class="toggle-chevron h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div id="period-projects-4" class="collapsible" role="region"
+                  aria-label="Projects from 2011 to 2018">
+                  <div class="collapsible-inner">
+                    <div class="rounded-lg border border-line bg-[#FAFBFD] p-4 sm:p-5">
+                      <p class="text-[11px] font-bold uppercase tracking-widest2 text-ink-400">Projects from this
+                        period</p>
+                      <ul class="mt-3 flex flex-wrap gap-2">
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Halo: The Master Chief Collection</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Halo: Combat Evolved Anniversary</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          War Thunder</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Armored Warfare</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Armored Warfare: Mobile</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Skyforge</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Pathologic 2</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Megapolis</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Vampirville</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Jungle Heat</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Stand O’Food City</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Iron Desert</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Might and Glory: Kingdom War</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Eco City</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Role 5 -->
+              <li class="relative pl-8">
+                <span class="absolute left-0 top-[7px] h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-white"
+                  aria-hidden="true"></span>
+
+                <p class="text-[13px] font-medium text-ink-400">2005 — 2011</p>
+                <h3 class="mt-1.5 text-[17px] font-bold tracking-[-0.01em] text-ink">Co-Founder &amp; Art Director
+                  <span class="font-bold text-ink-700">(Art Studio)</span>
+                </h3>
+                <p class="mt-1.5 text-[14.5px] leading-relaxed text-ink-500">
+                  Art direction, outsourcing projects, AAA and mobile titles.
+                </p>
+
+                <button type="button" data-collapsible-toggle aria-expanded="false" aria-controls="period-projects-5"
+                  class="group mt-3 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-accent transition-colors duration-200 hover:text-accent-dark">
+                  <span
+                    class="border-b border-transparent pb-px transition-colors duration-200 group-hover:border-accent-dark/40">
+                    View projects from this period
+                  </span>
+                  <svg class="toggle-chevron h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+
+                <div id="period-projects-5" class="collapsible" role="region"
+                  aria-label="Projects from 2005 to 2011">
+                  <div class="collapsible-inner">
+                    <div class="rounded-lg border border-line bg-[#FAFBFD] p-4 sm:p-5">
+                      <p class="text-[11px] font-bold uppercase tracking-widest2 text-ink-400">Projects from this
+                        period</p>
+                      <ul class="mt-3 flex flex-wrap gap-2">
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          TimeShift</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          IL-2 Sturmovik: Birds of Prey</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Wings of Prey</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          X-Blades</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Apache: Air Assault</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Battle: Los Angeles</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Cargo! The Quest For Gravity</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Birds of Steel</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Inversion</li>
+                        <li class="rounded-full border border-line bg-white px-3 py-1 text-[12.5px] font-medium text-ink-700">
+                          Skydive: Proximity Flight</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= TRUSTED BY ========================= -->
+    <section id="portfolio" class="bg-white pb-12 sm:pb-16">
+      <div class="mx-auto max-w-shell px-5 sm:px-8">
+        <div class="rounded-xl border border-line bg-white p-6 sm:p-8 lg:p-10">
+
+          <h2 class="max-w-[620px] text-[13px] font-bold uppercase leading-relaxed tracking-widest2 text-ink">
+            Trusted by Industry Leaders &amp; Projects Delivered For
+          </h2>
+          <span class="mt-3 block h-[2px] w-9 bg-accent" aria-hidden="true"></span>
+
+          <ul
+            class="mt-8 grid grid-cols-2 gap-x-4 gap-y-9 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-0 lg:gap-y-0 lg:divide-x lg:divide-line">
+            <!-- Saber Interactive -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-2.5 text-center text-ink-700">
+                <svg class="h-9 w-9" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M20 3.5A16.5 16.5 0 1 1 3.5 20 16.5 16.5 0 0 1 20 3.5Zm0 2.9A13.6 13.6 0 1 0 33.6 20 13.6 13.6 0 0 0 20 6.4Z" />
+                  <path d="M10.8 24.6c3.7-.6 6.8-2.7 9.2-6.1s5.6-5.4 9.5-5.8c-1.3 4.5-3.7 7.9-7.3 10.3-3.2 2-7.1 2.6-11.4 1.6Z" />
+                </svg>
+                <span class="text-[10.5px] font-bold uppercase leading-tight tracking-widest2">Saber<br />Interactive</span>
+              </div>
+            </li>
+
+            <!-- MY.GAMES -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-2.5 text-center text-ink-700">
+                <svg class="h-8 w-10" viewBox="0 0 44 30" fill="currentColor" aria-hidden="true">
+                  <path d="M0 29 11 6l8.5 17L30 6l14 23h-6.6L30 15.4 22.4 29h-5.9L11 15.4 6.6 29H0Z" />
+                </svg>
+                <span class="text-[12px] font-black uppercase leading-none tracking-[-0.01em]">MY.GAMES</span>
+              </div>
+            </li>
+
+            <!-- Gaijin Entertainment -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-1 text-center text-ink-700">
+                <span class="font-serif text-[30px] italic leading-none tracking-[-0.02em]">Gaijin</span>
+                <span class="text-[9px] font-semibold uppercase tracking-widest3 text-ink-500">Entertainment</span>
+              </div>
+            </li>
+
+            <!-- G5 Entertainment -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-2.5 text-center text-ink-700">
+                <span
+                  class="flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-current text-[16px] font-black leading-none tracking-[-0.04em]">G5</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest2 text-ink-500">Entertainment</span>
+              </div>
+            </li>
+
+            <!-- Midjourney -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-2.5 text-center text-ink-700">
+                <svg class="h-9 w-10" viewBox="0 0 44 32" fill="currentColor" aria-hidden="true">
+                  <path d="M21.5 1.5 21.5 21.5 8 21.5 21.5 1.5Z" />
+                  <path d="M24.5 9 34.6 21.5H24.5V9Z" />
+                  <path d="M2.5 24.5h39c-2.7 4.7-6.9 6.8-12.5 6.8H15c-5.6 0-9.8-2.1-12.5-6.8Z" />
+                </svg>
+                <span class="text-[12.5px] font-medium leading-none">Midjourney</span>
+              </div>
+            </li>
+
+            <!-- Stable Diffusion -->
+            <li class="flex items-center justify-center px-2 lg:px-5 lg:py-1">
+              <div class="flex flex-col items-center gap-2.5 text-center text-ink-700">
+                <svg class="h-9 w-9" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2"
+                  stroke-linecap="round" aria-hidden="true">
+                  <path d="M20 33a13 13 0 1 1 13-13c0 3.4-2.7 6.1-6.1 6.1S20 23.4 20 20s2.7-6.1 6.1-6.1" />
+                </svg>
+                <span class="text-[12px] font-medium leading-none">Stable Diffusion</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= CONTACT / FOOTER ========================= -->
+  <footer id="contact" class="border-t border-line bg-[#FBFCFD]">
+    <div class="mx-auto max-w-shell px-5 py-14 sm:px-8 sm:py-16">
+      <div class="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+
+        <div class="max-w-[640px]">
+          <h2 class="text-[13px] font-bold uppercase tracking-widest2 text-ink">Let's Talk About Your Next Game</h2>
+          <span class="mt-3 block h-[2px] w-9 bg-accent" aria-hidden="true"></span>
+
+          <p class="mt-6 text-[26px] font-black leading-[1.15] tracking-[-0.03em] text-ink sm:text-[32px]">
+            Ready to scale your studio, ship the product, or sharpen the art direction?
+          </p>
+          <p class="mt-4 text-[15.5px] leading-relaxed text-ink-500">
+            Available for full-time production leadership, project consulting, and turnkey team building.
+            Reach me directly at
+            <a href="mailto:hello@alexdurov.com"
+              class="font-semibold text-ink underline decoration-line underline-offset-4 transition-colors duration-200 hover:text-accent hover:decoration-accent">
+              hello@alexdurov.com
+            </a>.
+          </p>
+        </div>
+
+        <div class="flex shrink-0 flex-wrap items-center gap-3">
+          <a href="mailto:hello@alexdurov.com"
+            class="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[14.5px] font-semibold text-white transition-colors duration-300 hover:bg-accent">
+            <span>Let's talk</span>
+            <svg class="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <path d="M4 12h15" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          </a>
+          <a href="#home"
+            class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3.5 text-[14.5px] font-semibold text-ink-700 transition duration-300 hover:border-ink-400/60 hover:text-ink">
+            Back to top
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-[12.5px] text-ink-400 sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span id="currentYear">2026</span> Alex Durov. All rights reserved.</p>
+        <p class="uppercase tracking-widest2">Executive Game Producer &amp; Art Direction Expert</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================= INTERACTIONS ========================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      var toArray = function (nodeList) {
+        return Array.prototype.slice.call(nodeList);
+      };
+
+      /* ------------------------------------------------------------------
+         1. Expandable "View projects from this period" panels.
+            A single class toggle drives the CSS transition (see .collapsible),
+            so every era expands and collapses smoothly at its own height.
+      ------------------------------------------------------------------ */
+      toArray(document.querySelectorAll('[data-collapsible-toggle]')).forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+          var panel = document.getElementById(toggle.getAttribute('aria-controls'));
+          if (!panel) {
+            return;
+          }
+
+          var isOpen = panel.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      });
+
+      /* ------------------------------------------------------------------
+         2. Mobile navigation
+      ------------------------------------------------------------------ */
+      var navToggle = document.getElementById('navToggle');
+      var mobileNav = document.getElementById('mobileNav');
+      var navIconOpen = document.getElementById('navIconOpen');
+      var navIconClose = document.getElementById('navIconClose');
+
+      var setMobileNav = function (open) {
+        if (!mobileNav || !navToggle) {
+          return;
+        }
+
+        mobileNav.classList.toggle('hidden', !open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+        if (navIconOpen) {
+          navIconOpen.classList.toggle('hidden', open);
+        }
+        if (navIconClose) {
+          navIconClose.classList.toggle('hidden', !open);
+        }
+      };
+
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', function () {
+          setMobileNav(mobileNav.classList.contains('hidden'));
+        });
+
+        toArray(mobileNav.querySelectorAll('a')).forEach(function (link) {
+          link.addEventListener('click', function () {
+            setMobileNav(false);
+          });
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1024) {
+            setMobileNav(false);
+          }
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         3. Scroll spy — keeps the header underline on the section in view
+      ------------------------------------------------------------------ */
+      var navLinks = toArray(document.querySelectorAll('[data-nav-link]'));
+      var sections = [];
+
+      navLinks.forEach(function (link) {
+        var section = document.getElementById(link.getAttribute('data-nav-link'));
+        if (section && sections.indexOf(section) === -1) {
+          sections.push(section);
+        }
+      });
+
+      var activate = function (id) {
+        navLinks.forEach(function (link) {
+          link.classList.toggle('is-active', link.getAttribute('data-nav-link') === id);
+        });
+      };
+
+      if ('IntersectionObserver' in window && sections.length) {
+        var ratios = {};
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            ratios[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
+          });
+
+          var bestId = null;
+          var bestRatio = 0;
+
+          sections.forEach(function (section) {
+            var ratio = ratios[section.id] || 0;
+            if (ratio > bestRatio) {
+              bestRatio = ratio;
+              bestId = section.id;
+            }
+          });
+
+          if (bestId) {
+            activate(bestId);
+          }
+        }, { rootMargin: '-88px 0px -55% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         4. Footer year
+      ------------------------------------------------------------------ */
+      var year = document.getElementById('currentYear');
+      if (year) {
+        year.textContent = String(new Date().getFullYear());
+      }
+    })();
+  </script>
+</body>
+
+</html>
+
